@@ -1,6 +1,8 @@
 const languageButtons = document.querySelectorAll("[data-set-lang]");
 const languagePanels = document.querySelectorAll("[data-language]");
 const footerCopies = document.querySelectorAll("[data-copy]");
+const navLinks = document.querySelectorAll("[data-nav]");
+const topLinks = document.querySelectorAll("[data-top-link]");
 
 function setLanguage(language) {
   document.documentElement.lang = language;
@@ -11,6 +13,14 @@ function setLanguage(language) {
 
   for (const copy of footerCopies) {
     copy.hidden = copy.dataset.copy !== language;
+  }
+
+  for (const link of navLinks) {
+    link.hidden = link.dataset.nav !== language;
+  }
+
+  for (const link of topLinks) {
+    link.href = language === "ko" ? "#top-ko" : "#top";
   }
 
   for (const button of languageButtons) {
